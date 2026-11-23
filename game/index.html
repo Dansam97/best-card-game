@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emberfall Duel — a card game of embers and stone</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="table">
+  <!-- Opponent side -->
+  <section id="opponent-zone" class="zone">
+    <div class="duelist-tag">
+      <div class="avatar avatar-foe">B</div>
+      <div class="duelist-meta">
+        <div class="duelist-name">BRIX, THE EMBERKNIGHT <span class="role">opponent</span></div>
+        <div class="life-row">
+          <span class="life-label">LIFE</span>
+          <div class="life-bar"><div id="foe-life-fill" class="life-fill foe"></div></div>
+          <span id="foe-life-text" class="life-text">20</span>
+          <span id="foe-shield" class="shield-badge" title="Shield"></span>
+        </div>
+      </div>
+      <div id="intent-box">
+        <div class="intent-title">BRIX INTENDS</div>
+        <div id="intent-card"></div>
+      </div>
+    </div>
+    <div id="foe-hand" class="hand hand-backs" aria-label="Opponent hand"></div>
+  </section>
+
+  <!-- Middle strip: round + log -->
+  <section id="middle-strip">
+    <div id="round-banner">ROUND 1</div>
+    <div id="log"></div>
+  </section>
+
+  <!-- Player side -->
+  <section id="player-zone" class="zone">
+    <div id="player-hand" class="hand" aria-label="Your hand"></div>
+    <div class="duelist-tag">
+      <div class="avatar avatar-you">Y</div>
+      <div class="duelist-meta">
+        <div class="duelist-name">YOU, THE ASHEN DUELIST <span class="role">player</span></div>
+        <div class="life-row">
+          <span class="life-label">LIFE</span>
+          <div class="life-bar"><div id="you-life-fill" class="life-fill you"></div></div>
+          <span id="you-life-text" class="life-text">20</span>
+          <span id="you-shield" class="shield-badge" title="Shield"></span>
+        </div>
+        <div class="energy-row">
+          <span class="life-label">ENERGY</span>
+          <span id="energy-pips"></span>
+          <span id="deck-count" class="deck-count"></span>
+        </div>
+      </div>
+      <button id="end-turn" type="button">END TURN ▸</button>
+    </div>
+  </section>
+</div>
+
+<!-- Title overlay -->
+<div id="title-screen" class="overlay">
+  <div class="panel title-panel">
+    <div class="game-logo">EMBERFALL<br>DUEL</div>
+    <p class="tagline">A card duel of embers and stone. Read Brix's intent, answer it, and burn his 20 life to ash before he burns yours.</p>
+    <div class="rules">
+      <div><span class="suit-glyph suit-flame">▲</span> <b>Flame</b> cards deal damage</div>
+      <div><span class="suit-glyph suit-stone">■</span> <b>Stone</b> cards raise a shield</div>
+      <div><span class="suit-glyph suit-leaf">●</span> <b>Leaf</b> cards mend your life</div>
+      <div><span class="suit-glyph suit-spark">◆</span> <b>Spark</b> cards kindle energy &amp; cards</div>
+    </div>
+    <p class="howto">Each round your energy refills and grows (max 5). Play cards from your hand of 4, then END TURN — Brix carries out the intent he declared. First to 0 life falls.</p>
+    <button id="start-duel" class="big-button" type="button">START THE DUEL</button>
+  </div>
+</div>
+
+<!-- Win overlay -->
+<div id="win-screen" class="overlay hidden">
+  <div class="panel end-panel win-panel">
+    <div class="end-title win-title">VICTORY!</div>
+    <p class="end-text">Brix the Emberknight crumbles to cinders. The Emberfall crown is yours.</p>
+    <p id="win-stats" class="end-stats"></p>
+    <button class="big-button again-button" type="button">DUEL AGAIN</button>
+  </div>
+</div>
+
+<!-- Loss overlay -->
+<div id="lose-screen" class="overlay hidden">
+  <div class="panel end-panel lose-panel">
+    <div class="end-title lose-title">DEFEAT</div>
+    <p class="end-text">Your light gutters out on the duelling stone. Brix bows — and waits for your return.</p>
+    <p id="lose-stats" class="end-stats"></p>
+    <button class="big-button again-button" type="button">DUEL AGAIN</button>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
